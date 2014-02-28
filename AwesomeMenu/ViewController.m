@@ -36,10 +36,27 @@
     
     // Default Menu
     
-    AwesomeMenuItem *appStoreMenuItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"AppStoreIcon.png"]
+    AwesomeMenuItem *newPhotosMenuItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"NewPhotos.png"]
                                                            highlightedImage:nil
                                                                ContentImage:nil
                                                     highlightedContentImage:nil];
+    
+    AwesomeMenuItem *newMemorialsMenuItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"NewMemorials.png"]
+                                                               highlightedImage:nil
+                                                                   ContentImage:nil
+                                                        highlightedContentImage:nil];
+    
+    AwesomeMenuItem *viewMemorialsMenuItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"ViewMemorials.png"]
+                                                                  highlightedImage:nil
+                                                                      ContentImage:nil
+                                                           highlightedContentImage:nil];
+    
+    AwesomeMenuItem *allMenuItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"All.png"]
+                                                                   highlightedImage:nil
+                                                                       ContentImage:nil
+                                                            highlightedContentImage:nil];
+    
+    
     
     
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
@@ -80,23 +97,23 @@
                                                                ContentImage:starImage
                                                     highlightedContentImage:nil];
     
-    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, nil];
+    NSArray *menus = [NSArray arrayWithObjects:newPhotosMenuItem, newMemorialsMenuItem, viewMemorialsMenuItem, allMenuItem, nil];
     
-    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
-                                                       highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
-                                                           ContentImage:[UIImage imageNamed:@"icon-plus.png"]
-                                                highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
+    AwesomeMenuItem *startItem = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Circle_Bkgrd.png"]
+                                                       highlightedImage:nil
+                                                           ContentImage:[UIImage imageNamed:@"PlusOnCircle.png"]
+                                                highlightedContentImage:nil];
     
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds startItem:startItem optionMenus:menus];
     menu.delegate = self;
     menu.startPoint = CGPointMake(300, 400);
     menu.rotateAngle = 0.0;
     menu.menuWholeAngle = M_PI/2;
-    //menu.timeOffset = 0.5f;
+    menu.timeOffset = 0.04f;
     
-    menu.farRadius = 170.0f;
-    menu.nearRadius = 130.0f;
-    menu.endRadius = 150.0f;
+    menu.farRadius = 140.0f;
+    menu.nearRadius = 100.0f;
+    menu.endRadius = 120.0f;
     menu.isPlayingEndAnimation = NO;
 
     
