@@ -12,7 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *ClickMeBtn;
 @property (weak, nonatomic) IBOutlet UILabel *HelloLbl;
-
+@property (strong, nonatomic) AwesomeMenu *menu;
+@property (assign, nonatomic) CGFloat halfSize;
 @end
 
 @implementation ViewController
@@ -55,9 +56,6 @@
                                                                    highlightedImage:nil
                                                                        ContentImage:nil
                                                             highlightedContentImage:nil];
-    
-    
-    
     
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:nil
@@ -104,17 +102,20 @@
                                                            ContentImage:[UIImage imageNamed:@"PlusOnCircle.png"]
                                                 highlightedContentImage:nil];
     
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds startItem:startItem optionMenus:menus];
-    menu.delegate = self;
-    menu.startPoint = CGPointMake(300, 400);
-    menu.rotateAngle = 0.0;
-    menu.menuWholeAngle = M_PI/2;
-    menu.timeOffset = 0.04f;
+    self.menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds startItem:startItem optionMenus:menus];
+    self.menu.delegate = self;
+
+    self.halfSize =startItem.image.size.height/2;
+    self.menu.startPoint = CGPointMake(0+self.halfSize, self.view.bounds.size.height - self.halfSize);
     
-    menu.farRadius = 140.0f;
-    menu.nearRadius = 100.0f;
-    menu.endRadius = 120.0f;
-    menu.isPlayingEndAnimation = NO;
+    self.menu.rotateAngle = 0.0;
+    self.menu.menuWholeAngle = M_PI/2;
+    self.menu.timeOffset = 0.04f;
+    
+    self.menu.farRadius = 140.0f;
+    self.menu.nearRadius = 100.0f;
+    self.menu.endRadius = 120.0f;
+    self.menu.isPlayingEndAnimation = NO;
 
     
     /* Path-like customization
@@ -159,10 +160,15 @@
      
      */
     
-    [self.view addSubview:menu];
+    [self.view addSubview:self.menu];
 }
 
-
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    self.menu.frame = self.view.bounds;
+    self.menu.startPoint = CGPointMake(0+20, self.view.bounds.size.height - 20);
+}
 
 /* ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇ */
 /* ⬇⬇⬇⬇⬇⬇ GET RESPONSE OF MENU ⬇⬇⬇⬇⬇⬇ */
